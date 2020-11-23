@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import styles from './styles';
 
 const Main = () => (
-  <View>
-    <Text>Welcome to The Toodler!</Text>
+  <View style={styles.container}>
+    <Text style={styles.paragraph}>Welcome to The Toodler!</Text>
   </View>
 );
 
