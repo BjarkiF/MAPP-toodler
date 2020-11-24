@@ -17,7 +17,11 @@ const createAppContainer = () => (
                 component={Boards}
                 options={{title: 'Toodler'}}
             />
-            <Stack.Screen name="Board" component={Board} />
+            <Stack.Screen
+                name="Board"
+                component={Board}
+                options={({route}) => ({title: route.params.name})}
+            />
         </Stack.Navigator>
     </NavigationContainer>
 );
