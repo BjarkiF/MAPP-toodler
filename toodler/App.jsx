@@ -1,8 +1,8 @@
 import React from 'react';
-import Main from './src/views/main';
+import AppContainer from './src/routes';
 
 export default function App() {
   return (
-    <Main />
+    <AppContainer />
   );
 }

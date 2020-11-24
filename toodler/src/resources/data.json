@@ -3,7 +3,7 @@
         {
             "id": 1,
             "name": "Trip to the Netherlands!",
-            "thumbnailPhoto": "https://s25743.pcdn.co/wp-content/uploads/2018/05/points-of-interest-where-to-go-and-places-to-visit-in-the-netherlands-featured-1400x735.jpg"
+            "thumbnailPhoto": "https://www.netherlands-tourism.com/wp-content/uploads/2019/02/ccimage-shutterstock_534783616.jpg"
         },
         {
             "id": 2,
@@ -178,6 +178,6 @@
             "description": "From east coast to west coast!",
             "isFinished": true,
             "listId": 8
-        },
+        }
     ]
 }
