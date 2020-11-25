@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 const createAppContainer = () => (
     <NavigationContainer>
         <Stack.Navigator>
-            <Stack.Screen 
+            <Stack.Screen
                 name="Boards"
                 component={Boards}
                 options={{title: 'Toodler'}}
