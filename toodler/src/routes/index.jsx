@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Boards from '../views/Boards';
 import Board from '../views/Board';
+import Toolbar from '../components/Toolbar';
 
 const Stack = createStackNavigator();
 
@@ -15,9 +16,13 @@ const createAppContainer = () => (
             <Stack.Screen 
                 name="Boards"
                 component={Boards}
-                options={{title: 'Toodler'}}
+                options={{title: "Boards"}}
             />
-            <Stack.Screen name="Board" component={Board} />
+            <Stack.Screen
+                name="Board"
+                component={Board}
+                options={({ route }) => ({ title: route.params.name })}
+            />
         </Stack.Navigator>
     </NavigationContainer>
 );
