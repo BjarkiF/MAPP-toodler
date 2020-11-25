@@ -8,3 +8,8 @@ export const getAllBoards = () => {
 export const getListByBoardId = (id) => {
     return data.lists.filter(x => x.boardId === id );
 }
+
+export const removeListById = (id) => {
+    return data.lists.filter(x => x.id !== id );
+}
+

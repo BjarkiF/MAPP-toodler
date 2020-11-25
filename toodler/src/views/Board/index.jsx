@@ -27,8 +27,7 @@ class Board extends React.Component {
         const { lists } = this.state;
         return (
             <View>
-                <Text>Board nr: {boardId}</Text>
-        { lists.map(x => <Text key={x.id}>{x.name}</Text>) }
+                { lists.map(x => <Text key={x.id}>{x.name}</Text>) }
             </View>
         );
     }
