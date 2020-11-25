@@ -1,5 +1,4 @@
 import data from '../resources/data.json';
-import renderListHelper from './renderListHelper'
 
 export const getAllBoards = () => {
   const { boards } = data;
@@ -7,8 +6,12 @@ export const getAllBoards = () => {
 };
 
 export const getListByBoardId = (id) => data.lists.filter((x) => x.boardId === id);
-export const getTasksByListId = (id) => data.tasks.filter((x) => x.listId === id);
 export const removeListById = (id) => data.lists.filter((x) => x.id !== id);
+
+export const getTasksByListId = (id) => {
+  const list = data.tasks.filter((x) => x.listId === id);
+  return list;
+};
 
 export const getTasksByBoardIdClean = (id) => {
   const lists = getListByBoardId(id);

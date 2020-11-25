@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import styles from './styles';
 
-class List extends React.Component {
+class DisplayList extends React.Component {
   render() {
     const { items, renderItem } = this.props;
     return (
@@ -13,4 +13,4 @@ class List extends React.Component {
   }
 }
 
-export default List;
+export default DisplayList;

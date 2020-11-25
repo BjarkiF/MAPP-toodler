@@ -1,50 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import List from '../../components/List';
-import ListItem from '../../components/ListItem';
+import DisplayList from '../../components/DisplayList';
+import BookItem from '../../components/BookItem';
 
-import { boards } from '../../resources/data.json';
+import { getAllBoards } from '../../services/littleHelper';
 
-const Boards = ({navigation}) => {
-<<<<<<< Updated upstream
+const Boards = ({ navigation }) => {
+  const [allBoards, setAllBoards] = useState([]);
 
-    return (
-        <List 
-            items={ boards } 
-            renderItem={ item => 
-            <ListItem 
-                key={item.id} 
-                name={item.name} 
-                src={item.thumbnailPhoto} 
-                pressIt={ () => navigation.navigate('Board', { boardId: item.id, }) }
-=======
-    const [allBoards, setAllBoards] = useState([]);
-
-    useEffect(() => {
-        if (allBoards.length === 0) {
-            setAllBoards(getAllBoards());
-        }
-    });
-
-    const removeTable = (id) => {
-
+  useEffect(() => {
+    if (allBoards.length === 0) {
+      setAllBoards(getAllBoards());
     }
+  });
 
-    return (
-        <List
-            items={ allBoards }
-            renderItem={ item =>
-            <BookItem
-                key={item.id}
-                name={item.name}
-                src={item.thumbnailPhoto}
-                pressIt={ () => navigation.navigate('Board', { boardId: item.id, name: item.name }) }
-                remove={ () => console.log('REMOVE') }
-                edit={ () => console.log('EDIT!') }
->>>>>>> Stashed changes
-            /> }
+  const removeTable = (id) => {
+
+  };
+
+  return (
+    <DisplayList
+      items={allBoards}
+      renderItem={(item) => (
+        <BookItem
+          key={item.id}
+          name={item.name}
+          src={item.thumbnailPhoto}
+          pressIt={() => navigation.navigate('Board', { boardId: item.id, name: item.name })}
+          remove={() => console.log('REMOVE')}
+          edit={() => console.log('EDIT!')}
         />
-    );
-}
+      )}
+    />
+  );
+};
 
 export default Boards;

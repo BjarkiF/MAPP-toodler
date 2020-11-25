@@ -1,31 +1,27 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View, Text, StyleSheet, TouchableOpacity,
+} from 'react-native';
 
 const styles = StyleSheet.create({
-    item: {
-        flex: 1,
-        flexDirection: 'row',
-        padding: 10,
-    },
-    board: {
-        padding: 5,
-    },
-    thumbnail: {
-        width: 100,
-        height: 100
-    },
+  item: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 10,
+  },
+  list: {
+    padding: 5,
+  },
 });
 
-const ListItem = ({name, src, pressIt, selected}) => {
-    const backgroundColor =  selected ? "#452145" : "#FFF";
-
-    return (
-        <TouchableOpacity style={ [ styles.item, { backgroundColor } ] } onPress={ pressIt }>
-            <Text style={styles.board}>{ name }</Text>
-            <Image style={ styles.thumbnail } source={{ uri: src }} />
-        </TouchableOpacity>
-    )
+const ListItem = ({ name, color, pressIt }) => {
+  const [configure, setConfigure] = useState(true);
+  const backgroundColor = color
+  return (
+    <TouchableOpacity style={styles.item} onPress={pressIt}>
+      <Text style={styles.list}>{ name }</Text>
+    </TouchableOpacity>
+  );
 };
-
 
 export default ListItem;
