@@ -1,37 +1,44 @@
-import React, {useState, useEffect} from 'react';
-
+import React, { useState, useEffect } from 'react';
 import List from '../../components/List';
-import BookItem from '../../components/BookItem';
+import BoardItem from '../../components/BoardItem';
 
-import {getAllBoards} from '../../services/littleHelper';
+import { getAllBoards } from '../../services/littleHelper';
 
-const Boards = ({navigation}) => {
-    const [allBoards, setAllBoards] = useState([]);
+const Boards = ({ navigation }) => {
+  const [allBoards, setAllBoards] = useState([]);
 
-    useEffect(() => {
-        if (allBoards.length === 0) {
-            setAllBoards(getAllBoards());
-        }
-    });
-    
-    const removeTable = (id) => {
-        
+  useEffect(() => {
+    if (allBoards.length === 0) {
+      setAllBoards(getAllBoards());
     }
+  });
 
-    return (
-        <List 
-            items={ allBoards } 
-            renderItem={ item => 
-            <BookItem 
-                key={item.id} 
-                name={item.name} 
-                src={item.thumbnailPhoto} 
-                pressIt={ () => navigation.navigate('Board', { boardId: item.id, name: item.name }) }
-                remove={ () => console.log('REMOVE') }
-                edit={ () => console.log('EDIT!') }
-            /> }
+  const removeTable = (id) => {
+    setAllBoards((prevAllBoards) => prevAllBoards.filter((x) => x.id !== id));
+  };
+
+  const editTable = (obj) => {
+    setAllBoards((prevAllBoards) => {
+      const copyOfBoards = [...prevAllBoards];
+      const index = copyOfBoards.findIndex((x) => x.id === obj.id);
+      copyOfBoards[index] = obj;
+      return copyOfBoards;
+    });
+  };
+
+  return (
+    <List
+      items={allBoards}
+      renderItem={(item) => (
+        <BoardItem
+          key={item.id}
+          boardObj={item}
+          gotoBoard={() => navigation.navigate('Board', { boardId: item.id, name: item.name })}
+          remove={(id) => removeTable(id)}
+          edit={(obj) => editTable(obj)}
         />
-    );
-}
-
+      )}
+    />
+  );
+};
 export default Boards;

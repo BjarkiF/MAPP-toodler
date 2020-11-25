@@ -1,15 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import styles from './styles';
-class List extends React.Component {
-    render() {
-        const { items, renderItem } = this.props;
-        return (
-            <View style={styles.container}>
-                { items.map(renderItem) }
-            </View>
-        );
-    }
-}
 
+const List = (props) => {
+  const { items, renderItem } = props;
+  return (
+    <View style={styles.container}>
+      { items.map(renderItem) }
+    </View>
+  );
+};
+List.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.array).isRequired,
+  renderItem: PropTypes.func.isRequired,
+};
 export default List;
