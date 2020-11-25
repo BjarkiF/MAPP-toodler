@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { View } from 'react-native';
 import List from '../../components/List';
 import BoardItem from '../../components/BoardItem';
 
 import { getAllBoards } from '../../services/littleHelper';
+import EditItemView from '../EditItemView';
 
 const Boards = ({ navigation }) => {
   const [allBoards, setAllBoards] = useState([]);
@@ -13,17 +15,21 @@ const Boards = ({ navigation }) => {
     }
   });
 
-  const removeTable = (id) => {
+  const removeBoard = (id) => {
     setAllBoards((prevAllBoards) => prevAllBoards.filter((x) => x.id !== id));
   };
 
-  const editTable = (obj) => {
+  const editBoard = (obj) => {
     setAllBoards((prevAllBoards) => {
       const copyOfBoards = [...prevAllBoards];
       const index = copyOfBoards.findIndex((x) => x.id === obj.id);
       copyOfBoards[index] = obj;
       return copyOfBoards;
     });
+  };
+
+  const addBoard = () => {
+
   };
 
   return (
@@ -34,8 +40,8 @@ const Boards = ({ navigation }) => {
           key={item.id}
           boardObj={item}
           gotoBoard={() => navigation.navigate('Board', { boardId: item.id, name: item.name })}
-          remove={(id) => removeTable(id)}
-          edit={(obj) => editTable(obj)}
+          remove={(id) => removeBoard(id)}
+          edit={(obj) => editBoard(obj)}
         />
       )}
     />
