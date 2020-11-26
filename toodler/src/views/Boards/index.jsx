@@ -59,7 +59,7 @@ const Boards = ({ route, navigation }) => {
   return (
     <View>
       { addTable ? (
-        <EditItemView boardObj={{ name: '', thumbnailPhoto: '', id: (allBoards.length + 1)}} edit={(b) => addBoard(b)} />
+        <EditItemView boardObj={{ name: '', thumbnailPhoto: '', id: Math.floor(Math.random() * 100)}} edit={(b) => addBoard(b)} />
       )
         : (null)
       }
