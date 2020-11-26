@@ -17,6 +17,9 @@ const List = ({ navigation }) => {
           name={item.name}
           description={item.description}
           isFinished={item.isFinished}
+          /* pressIt={() => {
+            item.isFinished = !item.isFinished;
+          }} */
         />
       )}
     />

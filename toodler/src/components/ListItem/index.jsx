@@ -1,26 +1,18 @@
 import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity,
+  View, Text, TouchableOpacity,
 } from 'react-native';
-
-const styles = StyleSheet.create({
-  item: {
-    flex: 1,
-    flexDirection: 'row',
-    padding: 10,
-  },
-  list: {
-    padding: 5,
-  },
-});
+import styles from './styles'
 
 const ListItem = ({ name, color, pressIt }) => {
   const [configure, setConfigure] = useState(true);
   const backgroundColor = color
   return (
-    <TouchableOpacity style={styles.item} onPress={pressIt}>
-      <Text style={styles.list}>{ name }</Text>
-    </TouchableOpacity>
+    <View style={styles.listContainer}>
+      <TouchableOpacity style={styles.listItem} onPress={pressIt}>
+        <Text style={styles.listName}>{ name }</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 

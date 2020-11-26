@@ -6,9 +6,7 @@ import DisplayList from '../../components/DisplayList';
 
 const Board = ({ navigation }) => {
   const {boardId} = navigation.state.params;
-  console.log(boardId);
   const boardList = getListByBoardId(boardId);
-  console.log(boardList);
 
   return (
     <DisplayList
