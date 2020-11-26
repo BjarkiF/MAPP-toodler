@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import List from '../../components/List';
 import BoardItem from '../../components/BoardItem';
-
 import { getAllBoards } from '../../services/littleHelper';
 import EditItemView from '../EditItemView';
 
@@ -47,4 +46,5 @@ const Boards = ({ navigation }) => {
     />
   );
 };
+
 export default Boards;
