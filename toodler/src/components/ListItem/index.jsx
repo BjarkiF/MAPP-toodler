@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const ListItem = ({ listObj, tasks }) => {
+const ListItem = ({ listObj, tasks, remove }) => {
   const { name } = listObj;
   return (
     <View style={styles.listView}>
       <Text style={styles.listTitle}>{name}</Text>
       <View style={styles.itemTask}>
-        {tasks.map((t) => <TaskItem key={t.id} task={t} />)}
+        {tasks.map((t) => <TaskItem key={t.id} task={t} removeTable={(t) => remove(t)}/>)}
       </View>
     </View>
   );
