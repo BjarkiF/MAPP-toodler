@@ -2,7 +2,10 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { getListByBoardId } from '../../services/littleHelper';
+import { getListByBoardId, getAllTasksByBoardId, getTasksByListId } from '../../services/littleHelper';
+
+import List from '../../components/List';
+import ListItem from '../../components/ListItem';
 
 class Board extends React.Component {
   constructor(props) {
@@ -14,14 +17,20 @@ class Board extends React.Component {
   }
 
   componentDidMount() {
-
+    
   }
 
   render() {
     const { lists } = this.state;
+
     return (
       <View>
-        { lists.map((x) => <Text key={x.id}>{x.name}</Text>) }
+        <List
+          items={lists}
+          renderItem={(item) => (
+            <ListItem key={item.id} listObj={item} tasks={getTasksByListId(item.id)} />
+          )}
+        />
       </View>
     );
   }

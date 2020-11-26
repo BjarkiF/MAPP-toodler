@@ -12,7 +12,7 @@ const List = (props) => {
   );
 };
 List.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.array).isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
   renderItem: PropTypes.func.isRequired,
 };
 export default List;

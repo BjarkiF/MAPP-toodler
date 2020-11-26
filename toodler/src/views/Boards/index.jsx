@@ -8,10 +8,12 @@ import EditItemView from '../EditItemView';
 
 const Boards = ({ navigation }) => {
   const [allBoards, setAllBoards] = useState([]);
-
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    if (allBoards.length === 0) {
+    console.log("LOADED");
+    if (!loaded) {
       setAllBoards(getAllBoards());
+      setLoaded(true);
     }
   });
 
@@ -28,8 +30,8 @@ const Boards = ({ navigation }) => {
     });
   };
 
-  const addBoard = () => {
-
+  const addBoard = (obj) => {
+    setAllBoards((prevAllBoards) => prevAllBoards.push(obj));
   };
 
   return (
