@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   listItem: {
+    borderRadius: 20,
     backgroundColor: '#FFF',
     height: 100,
   },

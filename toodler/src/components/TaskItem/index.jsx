@@ -1,27 +1,23 @@
 import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity,
+  View, Text, TouchableOpacity,
 } from 'react-native';
-
-const styles = StyleSheet.create({
-  item: {
-    flex: 1,
-    flexDirection: 'row',
-    padding: 10,
-  },
-  list: {
-    padding: 5,
-  },
-});
+import styles from './styles';
+import listStyles from '../ListItem/styles';
 
 const TaskItem = ({ name, description, isFinished, pressIt }) => {
   const [configure, setConfigure] = useState(true);
   return (
-    <TouchableOpacity style={styles.item} onPress={pressIt}>
-      <Text style={styles.list}>{ name }</Text>
-      <Text style={styles.list}>{ description }</Text>
-      <Text style={styles.list}>{ isFinished }</Text>
-    </TouchableOpacity>
+    <View style={listStyles.listContainer}>
+      <TouchableOpacity style={listStyles.listItem} onPress={pressIt}>
+        <Text style={listStyles.listName}>{ name }</Text>
+        <Text style={styles.taskDescription}>{ description }</Text>
+        <Text style={styles.taskDescriptionName}>
+          Finished?
+          { isFinished }
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
