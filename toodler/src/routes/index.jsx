@@ -7,12 +7,12 @@ import { createAppContainer } from 'react-navigation';
 
 import Boards from '../views/Boards';
 import Board from '../views/Board';
-// import List from '../views/List';
+import List from '../views/List';
 
 const Stack = createStackNavigator({
   Boards,
   Board,
-  // List
+  List,
 });
 
 export default createAppContainer(Stack);
