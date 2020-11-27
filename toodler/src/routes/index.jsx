@@ -23,7 +23,12 @@ export default createAppContainer(Stack);
       <Stack.Screen
         name="Boards"
         component={Boards}
-        options={{ title: 'Toodler' }}
+        options={({ navigation, route }) => ({ title: 'Boards' })}
+      />
+      <Stack.Screen
+        name="Board"
+        component={Board}
+        options={({ navigation, route }) => ({ title: route.params.name })}
       />
       <Stack.Screen name="Board" component={Board} />
     </Stack.Navigator>

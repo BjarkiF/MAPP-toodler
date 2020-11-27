@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View, Text, TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
 
 const ListItem = ({ name, color, pressIt }) => {
-  const [configure, setConfigure] = useState(true);
   const backgroundColor = color;
   return (
     <View style={styles.listContainer}>
