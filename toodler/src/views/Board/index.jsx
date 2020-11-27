@@ -1,3 +1,30 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import data from '../../resources/data.json';
+import ListItem from '../List/ListItem';
+import DisplayList from '../DisplayList';
+
+const Board = ({ route, navigation }) => {
+  const { boardId } = route.params;
+  const boardList = data.lists.filter((x) => x.boardId === boardId);
+  return (
+    <DisplayList
+      items={boardList}
+      renderItem={(item) => (
+        <ListItem
+          key={item.id}
+          name={item.name}
+          color={item.color}
+          pressIt={() => navigation.navigate('List', {
+            listId: item.id,
+          })}
+        />
+      )}
+    />
+  );
+};
+
+/*
 import React, { useState, useEffect } from 'react';
 import {
   View, Text, TouchableHighlight, StyleSheet, Modal,
@@ -6,52 +33,9 @@ import PropTypes from 'prop-types';
 import { Feather } from '@expo/vector-icons';
 import { getListByBoardId, getAllTasksByBoardId, getTasksByListId } from '../../services/littleHelper';
 
-import List from '../../components/List';
-import ListItem from '../../components/ListItem';
-
-const styles = StyleSheet.create({
-  centeredView: {
-    zIndex: 10,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  button: {
-    color: 'black',
-    paddingRight: 5,
-  },
-});
+import styles from './styles';
+import DisplayList from '../DisplayList';
+import ListItem from '../ListItem';
 
 const Board = ({ route, navigation }) => {
   const [lists, setLists] = useState([]);
@@ -100,7 +84,7 @@ const Board = ({ route, navigation }) => {
         </View>
       )
         : (null)}
-      <List
+      <DisplayList
         items={lists}
         renderItem={(item) => (
           <ListItem key={item.id} listObj={item} tasks={getTasksByListId(item.id)} />
@@ -109,7 +93,7 @@ const Board = ({ route, navigation }) => {
     </View>
   );
 };
-
+*/
 Board.propTypes = {
   route: PropTypes.shape({
     params: PropTypes.shape({
