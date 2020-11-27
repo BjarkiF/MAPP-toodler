@@ -6,7 +6,7 @@ import BoardItem from './BoardItem';
 import Toolbar from '../Toolbar';
 
 import styles from './styles';
-import { getAllBoards } from '../../services/littleHelper';
+import data from '../../resources/data.json';
 import EditItemView from '../EditItemView';
 
 const Boards = ({ route, navigation }) => {
@@ -16,7 +16,7 @@ const Boards = ({ route, navigation }) => {
 
   useEffect(() => {
     if (!loaded) {
-      setAllBoards(getAllBoards());
+      setAllBoards(data.boards);
       setLoaded(true);
     }
     /*

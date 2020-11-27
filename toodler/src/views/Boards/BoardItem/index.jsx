@@ -27,7 +27,7 @@ const BoardItem = ({
     if (configure === 'edit') {
       configureView = (
         <EditItemView
-          boardObj={boardObj}
+          obj={boardObj}
           confirm={(b) => {
             edit(b);
             toggleView(null);

@@ -4,7 +4,7 @@ import { View, FlatList } from 'react-native';
 import data from '../../resources/data.json';
 import ListItem from '../../components/ListItem';
 import DisplayList from '../DisplayList';
-import commonStyles from '../../styles/commonStyles'
+import commonStyles from '../../styles/commonStyles';
 import Toolbar from '../Toolbar';
 import EditItemView from '../EditItemView';
 
@@ -34,6 +34,25 @@ const Board = ({ route, navigation }) => {
     }));
   };
 
+  const removeList = (id) => {
+    const newList = listOnBoard.filter((x) => x.id !== id);
+    setListOnBoard(newList);
+  };
+
+  const editList = (obj, newObj) => {
+    setListOnBoard((prevListOnBoard) => {
+      const copyOfLists = [...prevListOnBoard];
+      const index = copyOfLists.findIndex((x) => x.id === obj.id);
+      copyOfLists[index] = {
+        ...obj,
+        name: newObj.name,
+        color: newObj.color,
+      };
+      console.log('copy of', copyOfLists[index]);
+      return copyOfLists;
+    });
+  };
+
   return (
     <View style={commonStyles.Container}>
       <DisplayList
@@ -46,6 +65,8 @@ const Board = ({ route, navigation }) => {
             pressIt={() => navigation.navigate('List', {
               listId: item.id,
             })}
+            remove={() => removeList(item.id)}
+            edit={(l) => editList(item, l)}
           />
         )}
       />
