@@ -1,17 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
 import data from '../../resources/data.json';
 import ListItem from '../../components/ListItem';
 import DisplayList from '../../components/DisplayList';
 // import commonStyles from '../../styles/commonStyles'
+import Toolbar from '../Toolbar';
+import EditItemView from '../EditItemView';
 
-const Board = ({ navigation }) => {
-  const { boardId } = navigation.state.params;
-  const boardList = data.lists.filter((x) => x.boardId === boardId);
+const Board = ({ route, navigation }) => {
+  const { boardId } = route.params;
+
+  const [listOnBoard, setListOnBoard] = useState([]);
+  const [reloadBoard, setReloadBoard] = useState(true);
+  const [addList, setAddList] = useState(false);
+
+  useEffect(() => {
+    if (reloadBoard) {
+      setListOnBoard(data.lists.filter((x) => x.boardId === boardId));
+      setReloadBoard(false);
+    }
+    navigation.setOptions({
+      headerRight: () => (
+        <Toolbar toggle={() => setAddList(!addList)} />
+      ),
+    });
+  });
+
+  const addToList = (l) => {
+    setListOnBoard((prev) => ({
+      ...prev,
+      lb,
+    }));
+  };
 
   return (
     <DisplayList
-      items={boardList}
+      items={listOnBoard}
       renderItem={(item) => (
         <ListItem
           key={item.id}

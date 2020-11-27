@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import data from '../../resources/data.json';
-import TaskItem from '../Tasks/TaskItem';
+import TaskItem from './TaskItem';
 import DisplayList from '../DisplayList';
 
-const List = ({ route }) => {
-  const { listId } = route.params;
+const Tasks = ({ navigation }) => {
+  const { listId } = navigation.state.params;
   const taskList = data.tasks.filter((x) => x.listId === listId);
 
   const finishtask = (id) => {
@@ -28,11 +28,5 @@ const List = ({ route }) => {
     />
   );
 };
-List.propTypes = {
-  route: PropTypes.shape({
-    params: PropTypes.shape({
-      listId: PropTypes.number,
-    }),
-  }).isRequired,
-};
-export default List;
+
+export default Tasks;

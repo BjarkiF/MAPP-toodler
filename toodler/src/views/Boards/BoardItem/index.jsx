@@ -4,8 +4,8 @@ import {
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import RemoveItemView from '../../views/RemoveItemView';
-import EditItemView from '../../views/EditItemView';
+import RemoveItemView from '../../RemoveItemView';
+import EditItemView from '../../EditItemView';
 import styles from './styles';
 
 const BoardItem = ({
@@ -28,7 +28,7 @@ const BoardItem = ({
       configureView = (
         <EditItemView
           boardObj={boardObj}
-          edit={(b) => {
+          confirm={(b) => {
             edit(b);
             toggleView(null);
           }}

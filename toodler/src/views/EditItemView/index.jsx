@@ -3,23 +3,24 @@ import PropTypes from 'prop-types';
 import {
   View, TextInput, Button,
 } from 'react-native';
+import styles from './styles';
 
-const EditItemView = ({ boardObj, edit }) => {
+const EditItemView = ({ boardObj, confirm }) => {
   const [name, onChangeName] = useState(boardObj.name);
   const [thumbnailPhoto, onChangeThumbnailPhoto] = useState(boardObj.thumbnailPhoto);
   return (
-    <View>
+    <View style={styles.EditItemContainer}>
       <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        style={styles.InputName}
         onChangeText={(text) => onChangeName(text)}
         value={name}
       />
       <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        style={styles.InputName}
         onChangeText={(text) => onChangeThumbnailPhoto(text)}
         value={thumbnailPhoto}
       />
-      <Button title="Confirm" onPress={() => edit({ id: boardObj.id, name, thumbnailPhoto })} />
+      <Button title="Confirm" onPress={() => confirm({ id: boardObj.id, name, thumbnailPhoto })} />
     </View>
   );
 };
@@ -28,7 +29,14 @@ EditItemView.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     thumbnailPhoto: PropTypes.string,
-  }).isRequired,
-  edit: PropTypes.func.isRequired,
+  }),
+  confirm: PropTypes.func.isRequired,
+};
+EditItemView.defaultProps = {
+  boardObj: {
+    name: 'Default Name',
+    thumbnailPhoto:
+      'https://st4.depositphotos.com/14953852/22772/v/1600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg',
+  },
 };
 export default EditItemView;

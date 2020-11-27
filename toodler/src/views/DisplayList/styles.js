@@ -6,9 +6,9 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     flexWrap: 'wrap',
+    alignItems: 'center',
     padding: 20,
     backgroundColor: darkerBlue,
-    alignItems: 'center',
     justifyContent: 'space-around',
   },
   paragraph: {

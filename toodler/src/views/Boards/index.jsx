@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableHighlight, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import DisplayList from '../../components/DisplayList';
-import BoardItem from '../../components/BoardItem';
-import data from '../../resources/data.json';
-import EditItemView from '../EditItemView';
+import { View } from 'react-native';
 
-const styles = StyleSheet.create({
-  button: {
-    color: 'black',
-    paddingRight: 5,
-  },
-});
+import DisplayList from '../DisplayList';
+import BoardItem from './BoardItem';
+import Toolbar from '../Toolbar';
+
+import styles from './styles';
+import { getAllBoards } from '../../services/littleHelper';
+import EditItemView from '../EditItemView';
 
 const Boards = ({ route, navigation }) => {
   const [allBoards, setAllBoards] = useState([]);
@@ -20,17 +16,13 @@ const Boards = ({ route, navigation }) => {
 
   useEffect(() => {
     if (!loaded) {
-      setAllBoards(data.boards);
+      setAllBoards(getAllBoards());
       setLoaded(true);
     }
     /*
     navigation.setOptions({
       headerRight: () => (
-        <TouchableHighlight onPress={() => setAddTable(!addTable)}>
-          <View style={styles.button}>
-            <Ionicons name="md-add" size={24} color="black" />
-          </View>
-        </TouchableHighlight>
+        <Toolbar toggle={() => setAddTable(!addTable) } />
       ),
     }); */
   });
@@ -58,18 +50,31 @@ const Boards = ({ route, navigation }) => {
   };
 
   return (
-    <DisplayList
-      items={allBoards}
-      renderItem={(item) => (
-        <BoardItem
-          key={item.id}
-          boardObj={item}
-          gotoBoard={() => navigation.navigate('Board', { boardId: item.id, name: item.name })}
-          remove={(id) => removeBoard(id)}
-          edit={(obj) => editBoard(obj)}
+    <View style={styles.boardContainer}>
+      { addTable ? (
+        <EditItemView
+          obj={{
+            name: 'Default Name',
+            thumbnailPhoto: 'https://st4.depositphotos.com/14953852/22772/v/1600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg',
+            id: Math.floor(Math.random() * 100),
+          }}
+          confirm={(b) => addBoard(b)}
         />
-      )}
-    />
+      )
+        : (null)}
+      <DisplayList
+        items={allBoards}
+        renderItem={(item) => (
+          <BoardItem
+            key={item.id}
+            boardObj={item}
+            gotoBoard={() => navigation.navigate('Board', { boardId: item.id, name: item.name })}
+            remove={(id) => removeBoard(id)}
+            edit={(obj) => editBoard(obj)}
+          />
+        )}
+      />
+    </View>
   );
 };
 
