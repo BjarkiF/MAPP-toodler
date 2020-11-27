@@ -8,11 +8,6 @@ const List = ({ route }) => {
   const { listId } = route.params;
   const taskList = data.tasks.filter((x) => x.listId === listId);
 
-  const finishtask = (id) => {
-    const task = data.tasks.filter((x) => x.id === id);
-    task.isFinished = !task.isFinished;
-  };
-
   return (
     <DisplayList
       items={taskList}
@@ -22,7 +17,7 @@ const List = ({ route }) => {
           name={item.name}
           description={item.description}
           isFinished={item.isFinished}
-          pressIt={() => { finishtask(item.id); }}
+          onPress={() => item.pressIt}
         />
       )}
     />
