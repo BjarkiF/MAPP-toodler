@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
+import { View, FlatList } from 'react-native';
 import data from '../../resources/data.json';
 import ListItem from '../../components/ListItem';
 import DisplayList from '../DisplayList';
-// import commonStyles from '../../styles/commonStyles'
+import commonStyles from '../../styles/commonStyles'
 import Toolbar from '../Toolbar';
 import EditItemView from '../EditItemView';
 
@@ -35,19 +35,21 @@ const Board = ({ route, navigation }) => {
   };
 
   return (
-    <DisplayList
-      items={listOnBoard}
-      renderItem={(item) => (
-        <ListItem
-          key={item.id}
-          name={item.name}
-          color={item.color}
-          pressIt={() => navigation.navigate('List', {
-            listId: item.id,
-          })}
-        />
-      )}
-    />
+    <View style={commonStyles.Container}>
+      <DisplayList
+        items={listOnBoard}
+        renderItem={(item) => (
+          <ListItem
+            key={item.id}
+            name={item.name}
+            color={item.color}
+            pressIt={() => navigation.navigate('List', {
+              listId: item.id,
+            })}
+          />
+        )}
+      />
+    </View>
   );
 };
 /*

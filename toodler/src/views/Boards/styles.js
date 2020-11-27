@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   boardContainer: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     padding: 2,
     alignItems: 'stretch',
     margin: 4,
