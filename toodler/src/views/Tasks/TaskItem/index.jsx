@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
-import listStyles from '../../List/ListItem/styles';
+import listStyles from '../../../components/ListItem/styles';
 
 function FinishedCheck(props) {
   const { isFin } = props;
