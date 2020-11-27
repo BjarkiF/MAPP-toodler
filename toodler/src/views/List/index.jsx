@@ -1,28 +1,83 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import data from '../../resources/data.json';
 import TaskItem from '../Tasks/TaskItem';
 import DisplayList from '../DisplayList';
+import Toolbar from '../Toolbar';
+import commonStyles from '../../styles/commonStyles';
+import NewTaskForm from './NewTaskForm';
 
-const List = ({ route }) => {
+const List = ({ route, navigation }) => {
   const { listId } = route.params;
-  const taskList = data.tasks.filter((x) => x.listId === listId);
+  const [tasksOnList, setTasksOnList] = useState([]);
+  const [reloadList, setReloadList] = useState(true);
+  const [addTask, setAddTask] = useState(false);
+
+  useEffect(() => {
+    if (reloadList) {
+      setTasksOnList(data.tasks.filter((x) => x.listId === listId));
+      setReloadList(false);
+    }
+    navigation.setOptions({
+      headerRight: () => (
+        <Toolbar toggle={() => setAddTask(!addTask)} />
+      ),
+    });
+  });
+
+  const addToList = (l) => {
+    setTasksOnList((prev) => {
+      const {
+        name,
+        description,
+        isFinished,
+        id,
+      } = l;
+      const copyOfLists = [...prev];
+      copyOfLists.push({
+        name,
+        description,
+        isFinished,
+        id,
+        listId,
+      });
+      return copyOfLists;
+    });
+    setAddTask(false);
+  };
+
+  function removeTask(id) {
+    const newList = tasksOnList.filter((x) => x.id !== id);
+    setTasksOnList(newList);
+  }
 
   return (
-    <DisplayList
-      items={taskList}
-      renderItem={(item) => (
-        <TaskItem
-          key={item.id}
-          name={item.name}
-          description={item.description}
-          isFinished={item.isFinished}
-          onPress={() => item.pressIt}
+    <View style={commonStyles.Container}>
+      { addTask ? (
+        <NewTaskForm
+          confirm={(l) => addToList(l)}
+          cancel={() => setAddTask(false)}
         />
-      )}
-    />
+      ) : (null) }
+      <DisplayList
+        items={tasksOnList}
+        renderItem={(item) => (
+          <TaskItem
+            id={item.id}
+            name={item.name}
+            description={item.description}
+            isFinished={item.isFinished}
+            onPress={() => item.pressIt}
+            listId={item.listId}
+            removeTask={(id) => removeTask(id)}
+          />
+        )}
+      />
+    </View>
   );
 };
+
 List.propTypes = {
   route: PropTypes.shape({
     params: PropTypes.shape({
@@ -30,4 +85,5 @@ List.propTypes = {
     }),
   }).isRequired,
 };
+
 export default List;
