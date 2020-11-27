@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
-import List from '../../components/List';
+import DisplayList from '../../components/DisplayList';
 import BoardItem from '../../components/BoardItem';
-import { getAllBoards } from '../../services/littleHelper';
+import data from '../../resources/data.json';
 import EditItemView from '../EditItemView';
 
 const Boards = ({ navigation }) => {
@@ -10,7 +10,7 @@ const Boards = ({ navigation }) => {
 
   useEffect(() => {
     if (allBoards.length === 0) {
-      setAllBoards(getAllBoards());
+      setAllBoards(data.boards);
     }
   });
 
@@ -28,11 +28,10 @@ const Boards = ({ navigation }) => {
   };
 
   const addBoard = () => {
-
   };
 
   return (
-    <List
+    <DisplayList
       items={allBoards}
       renderItem={(item) => (
         <BoardItem

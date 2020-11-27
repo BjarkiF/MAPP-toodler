@@ -1,40 +1,12 @@
 import React, { useState } from 'react';
 import {
-  View, Text, Image, StyleSheet, TouchableOpacity,
+  View, Text, Image, TouchableOpacity,
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import RemoveItemView from '../../views/RemoveItemView';
 import EditItemView from '../../views/EditItemView';
-
-const styles = StyleSheet.create({
-  boardView: {
-    flex: 1,
-    flexDirection: 'row',
-    padding: 3,
-    marginBottom: 5,
-    backgroundColor: '#FFF',
-  },
-
-  leftBoardView: {
-    padding: 0,
-    width: 200,
-  },
-  configureBoard: {
-    width: 200,
-  },
-  board: {
-    padding: 0,
-  },
-  thumbnail: {
-    width: 80,
-    height: 80,
-  },
-  boardConfigure: {
-    height: 100,
-    width: 100,
-  },
-});
+import styles from './styles';
 
 const BoardItem = ({
   boardObj, gotoBoard, remove, edit,

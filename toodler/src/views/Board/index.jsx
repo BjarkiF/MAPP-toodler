@@ -1,44 +1,12 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import { getListByBoardId } from '../../services/littleHelper';
+import PropTypes from 'prop-types';
+import data from '../../resources/data.json';
 import ListItem from '../../components/ListItem';
 import DisplayList from '../../components/DisplayList';
 
-import { getListByBoardId } from '../../services/littleHelper';
-
-class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    const { route } = this.props;
-    this.state = {
-      lists: getListByBoardId(route.params.boardId),
-    };
-  }
-
-  componentDidMount() {
-
-  }
-
-  render() {
-    const { lists } = this.state;
-    return (
-      <View>
-        { lists.map((x) => <Text key={x.id}>{x.name}</Text>) }
-      </View>
-    );
-  }
-}
-Board.propTypes = {
-  route: PropTypes.shape({
-    params: PropTypes.shape({
-      boardId: PropTypes.number,
-    }),
-  }).isRequired,
-};
-
-/* const Board = ({ navigation }) => {
-  const {boardId} = navigation.state.params;
-  const boardList = getListByBoardId(boardId);
+const Board = ({ navigation }) => {
+  const { boardId } = navigation.state.params;
+  const boardList = data.lists.filter((x) => x.boardId === boardId);
 
   return (
     <DisplayList
@@ -50,11 +18,19 @@ Board.propTypes = {
           color={item.color}
           pressIt={() => navigation.navigate('List', {
             listId: item.id,
-            name: item.name,
-})}
+          })}
         />
       )}
     />
   );
-}; */
+};
+
+Board.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      boardId: PropTypes.number,
+    }),
+  }).isRequired,
+};
+
 export default Board;
