@@ -34,6 +34,23 @@ const Board = ({ route, navigation }) => {
     }));
   };
 
+  const removeList = (id) => {
+    const newList = listOnBoard.filter((x) => x.id !== id);
+    setListOnBoard(newList);
+  };
+
+  const editList = (obj, newObj) => {
+    setListOnBoard((prevListOnBoard) => {
+      const copyOfLists = [...prevListOnBoard];
+      const index = copyOfLists.findIndex((x) => x.id === obj.id);
+      copyOfLists[index] = {
+        ...obj,
+        newObj,
+      };
+      return copyOfLists;
+    });
+  };
+
   return (
     <DisplayList
       items={listOnBoard}
@@ -45,6 +62,8 @@ const Board = ({ route, navigation }) => {
           pressIt={() => navigation.navigate('List', {
             listId: item.id,
           })}
+          remove={() => removeList(item.id)}
+          edit={(l) => editList(item, l)}
         />
       )}
     />

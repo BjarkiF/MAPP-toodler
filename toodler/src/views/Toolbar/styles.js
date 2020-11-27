@@ -2,6 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   touchable: {
-    padding: 3,
+    padding: 5,
   },
 });
