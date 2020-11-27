@@ -23,6 +23,7 @@ const Boards = ({ route, navigation }) => {
       setAllBoards(data.boards);
       setLoaded(true);
     }
+    /*
     navigation.setOptions({
       headerRight: () => (
         <TouchableHighlight onPress={() => setAddTable(!addTable)}>
@@ -31,7 +32,7 @@ const Boards = ({ route, navigation }) => {
           </View>
         </TouchableHighlight>
       ),
-    });
+    }); */
   });
 
   const removeBoard = (id) => {

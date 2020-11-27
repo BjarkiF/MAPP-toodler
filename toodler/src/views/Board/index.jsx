@@ -1,9 +1,9 @@
-/*
 import React from 'react';
 import PropTypes from 'prop-types';
 import data from '../../resources/data.json';
 import ListItem from '../../components/ListItem';
 import DisplayList from '../../components/DisplayList';
+// import commonStyles from '../../styles/commonStyles'
 
 const Board = ({ navigation }) => {
   const { boardId } = navigation.state.params;
@@ -23,7 +23,9 @@ const Board = ({ navigation }) => {
         />
       )}
     />
-*/
+  );
+};
+/*
 import React, { useState, useEffect } from 'react';
 import {
   View, Text, TouchableHighlight, StyleSheet, Modal,
@@ -134,7 +136,7 @@ const Board = ({ route, navigation }) => {
       />
     </View>
   );
-};
+}; */
 
 Board.propTypes = {
   route: PropTypes.shape({

@@ -7,11 +7,9 @@ import styles from './styles';
 const ListItem = ({ name, color, pressIt }) => {
   const backgroundColor = color;
   return (
-    <View style={styles.listContainer}>
-      <TouchableOpacity style={styles.listItem} onPress={pressIt}>
-        <Text style={styles.listName}>{ name }</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={styles.listItem} onPress={pressIt}>
+      <Text style={styles.listName}>{ name }</Text>
+    </TouchableOpacity>
   );
 };
 
