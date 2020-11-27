@@ -1,16 +1,53 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import {
+  Text, TouchableOpacity, View,
+} from 'react-native';
+import { CheckBox } from 'react-native-elements';
 import styles from './styles';
 import listStyles from '../../../components/ListItem/styles';
 
-function FinishedCheck(props) {
-  const { isFin } = props;
-  if (isFin) {
-    return 'YES';
+class TaskItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      description: '',
+      isFinished: null,
+    };
   }
-  return 'NO!';
-}
 
+  async componentDidMount() {
+    const { name } = this.props;
+    const { description } = this.props;
+    const { isFinished } = this.props;
+    this.setState({
+      name,
+      description,
+      isFinished,
+    });
+  }
+
+  render() {
+    // const { name } = this.props;
+    // const { description } = this.props;
+    // const { isFinished } = this.props;
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.item}>
+          <Text style={listStyles.listName}>{this.state.name}</Text>
+          <Text style={styles.taskDescription}>{this.state.description}</Text>
+          <CheckBox
+            center
+            title="Complete?"
+            onPress={() => this.setState({ isFinished: !this.state.isFinished })}
+            checked={this.state.isFinished}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+/*
 const TaskItem = ({
   name, description, isFinished, pressIt,
 }) => (
@@ -24,6 +61,6 @@ const TaskItem = ({
       </Text>
     </TouchableOpacity>
   </View>
-);
+); */
 
 export default TaskItem;
