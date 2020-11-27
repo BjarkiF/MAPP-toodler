@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   boardView: {
     flex: 1,
     flexDirection: 'row',
@@ -28,3 +28,5 @@ export default StyleSheet.create({
     width: 100,
   },
 });
+
+export default styles;

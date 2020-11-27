@@ -76,4 +76,5 @@ const Boards = ({ route, navigation }) => {
     </View>
   );
 };
+
 export default Boards;
