@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import data from '../../resources/data.json';
 import ListItem from '../../components/ListItem';
-import DisplayList from '../../components/DisplayList';
+import DisplayList from '../DisplayList';
 // import commonStyles from '../../styles/commonStyles'
 import Toolbar from '../Toolbar';
 import EditItemView from '../EditItemView';
