@@ -45,8 +45,10 @@ const Board = ({ route, navigation }) => {
       const index = copyOfLists.findIndex((x) => x.id === obj.id);
       copyOfLists[index] = {
         ...obj,
-        newObj,
+        name: newObj.name,
+        color: newObj.color,
       };
+      console.log('copy of', copyOfLists[index]);
       return copyOfLists;
     });
   };
