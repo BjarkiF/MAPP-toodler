@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableHighlight } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View } from 'react-native';
+
 import DisplayList from '../DisplayList';
 import BoardItem from './BoardItem';
+import Toolbar from '../Toolbar';
+
 import styles from './styles';
 import { getAllBoards } from '../../services/littleHelper';
 import EditItemView from '../EditItemView';
@@ -19,11 +21,7 @@ const Boards = ({ route, navigation }) => {
     }
     navigation.setOptions({
       headerRight: () => (
-        <TouchableHighlight onPress={() => setAddTable(!addTable)}>
-          <View style={styles.button}>
-            <Ionicons name="md-add" size={24} color="black" />
-          </View>
-        </TouchableHighlight>
+        <Toolbar toggle={() => setAddTable(!addTable) } />
       ),
     });
   });
