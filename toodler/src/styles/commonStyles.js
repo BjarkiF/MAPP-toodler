@@ -15,6 +15,11 @@ const commonStyles = StyleSheet.create({
     margin: 4,
     justifyContent: 'space-around',
   },
+  InputName: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+  },
 });
 
 export default commonStyles;

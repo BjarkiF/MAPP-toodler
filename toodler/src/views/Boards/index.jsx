@@ -19,12 +19,12 @@ const Boards = ({ route, navigation }) => {
       setAllBoards(data.boards);
       setLoaded(true);
     }
-    /*
+
     navigation.setOptions({
       headerRight: () => (
         <Toolbar toggle={() => setAddTable(!addTable) } />
       ),
-    }); */
+    });
   });
 
   const removeBoard = (id) => {
@@ -77,5 +77,4 @@ const Boards = ({ route, navigation }) => {
     </View>
   );
 };
-
 export default Boards;

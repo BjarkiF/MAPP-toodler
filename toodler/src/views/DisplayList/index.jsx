@@ -13,7 +13,10 @@ const DisplayList = (props) => {
 };
 
 DisplayList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.array).isRequired,
+  items: PropTypes.arrayOf(PropTypes.object),
   renderItem: PropTypes.func.isRequired,
+};
+DisplayList.defaultProps = {
+  items: [],
 };
 export default DisplayList;
