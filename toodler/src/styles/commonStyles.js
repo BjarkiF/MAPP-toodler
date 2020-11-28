@@ -36,7 +36,9 @@ const commonStyles = StyleSheet.create({
     marginBottom: 5,
     backgroundColor: '#FFF',
   },
-
+  listName: {
+    padding: 15,
+  },
 });
 
 export default commonStyles;

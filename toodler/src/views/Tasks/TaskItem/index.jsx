@@ -12,7 +12,6 @@ import {
 } from 'react-native-popup-menu';
 import styles from './styles';
 import commonStyles from '../../../styles/commonStyles';
-import listStyles from '../../../components/ListItem/styles';
 
 class TaskItem extends React.Component {
   constructor(props) {
@@ -65,7 +64,7 @@ class TaskItem extends React.Component {
               style={commonStyles.listItem}
               onLongPress={() => this.openMenu()}
             >
-              <Text style={listStyles.listName}>{name}</Text>
+              <Text style={commonStyles.listName}>{name}</Text>
               <Text style={styles.taskDescription}>{description}</Text>
               <CheckBox
                 center
@@ -78,18 +77,18 @@ class TaskItem extends React.Component {
         ) : (
           <View>
             <TextInput
-              style={styles.InputName}
+              style={commonStyles.InputName}
               defaultValue={name}
               onChangeText={(text) => this.setState({ name: text })}
             />
             <TextInput
-              style={styles.InputName}
+              style={commonStyles.InputName}
               defaultValue={description}
               onChangeText={(text) => this.setState({ description: text })}
             />
             <TextInput
               defaultValue="List ID:"
-              style={styles.InputName}
+              style={commonStyles.InputName}
               keyboardType="numeric"
               onChangeText={(text) => {
                 this.setState(

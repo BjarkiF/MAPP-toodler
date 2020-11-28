@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import data from '../../resources/data.json';
-import ListItem from '../../components/ListItem';
+import ListItem from '../List/ListItem';
 import DisplayList from '../../components/DisplayList';
 import NewListForm from '../List/NewListForm';
 import commonStyles from '../../styles/commonStyles';
