@@ -5,11 +5,11 @@ import DisplayList from '../../components/DisplayList';
 import BoardItem from '../Board/BoardItem';
 import Toolbar from '../Toolbar';
 import CommonStyles from '../../styles/commonStyles';
-import styles from './styles';
+
 import data from '../../resources/data.json';
 import NewBoardForm from '../Board/NewBoardForm';
 
-const Boards = ({ route, navigation }) => {
+const Boards = ({ navigation }) => {
   const [allBoards, setAllBoards] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [addTable, setAddTable] = useState(false);
@@ -22,7 +22,7 @@ const Boards = ({ route, navigation }) => {
 
     navigation.setOptions({
       headerRight: () => (
-        <Toolbar toggle={() => setAddTable(!addTable) } />
+        <Toolbar toggle={() => setAddTable(!addTable)} />
       ),
     });
   });

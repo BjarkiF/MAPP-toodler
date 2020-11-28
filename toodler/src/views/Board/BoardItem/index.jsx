@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import RemoveItemView from '../../../components/RemoveItemView';
 
 import CommonStyles from '../../../styles/commonStyles';
 import styles from './styles';
@@ -15,7 +14,6 @@ const BoardItem = ({
 }) => {
   const [configure, setConfigure] = useState(null);
   const { name, thumbnailPhoto } = boardObj;
-  let configureView;
 
   const toggleView = (conf) => {
     if (conf === configure) {
@@ -25,28 +23,6 @@ const BoardItem = ({
     }
   };
 
-  if (configure !== null) {
-    if (configure === 'edit') {
-      configureView = (
-        <NewBoardForm
-          obj={boardObj}
-          confirm={(b) => {
-            edit(b);
-            toggleView(null);
-          }}
-        />
-      );
-    } else {
-      configureView = (
-        <RemoveItemView
-          boardObj={boardObj}
-          remove={(b) => remove(b)}
-          toggleView={() => toggleView(null)}
-        />
-      );
-    }
-  }
-
   return (
     <View style={CommonStyles.View}>
       { !configure ? (
@@ -55,15 +31,19 @@ const BoardItem = ({
           <Image style={styles.thumbnail} source={{ uri: thumbnailPhoto }} />
         </TouchableOpacity>
       ) : (
-        <View style={styles.leftBoardView}>
-          <Text>{ configureView }</Text>
-        </View>
+        <NewBoardForm
+          obj={boardObj}
+          confirm={(b) => {
+            edit(b);
+            toggleView(null);
+          }}
+        />
       )}
       <View style={styles.rightBoardView}>
         <TouchableOpacity onPress={() => toggleView('edit')}>
           <FontAwesome name="edit" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => toggleView('remove')}>
+        <TouchableOpacity onPress={() => remove(boardObj.id)}>
           <FontAwesome name="trash-o" size={24} color="black" />
         </TouchableOpacity>
       </View>

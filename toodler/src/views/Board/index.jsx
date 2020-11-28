@@ -59,7 +59,7 @@ const Board = ({ route, navigation }) => {
       return copyOfLists;
     });
   };
-  
+
   return (
     <View style={commonStyles.Container}>
       { addList ? (

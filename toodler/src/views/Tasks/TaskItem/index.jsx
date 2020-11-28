@@ -26,6 +26,7 @@ class TaskItem extends React.Component {
       oldListId: 0,
     };
     // this.deleteTask = this.deleteTask.bind(this);
+    this.refFunc = this.refFunc.bind(this);
   }
 
   async componentDidMount() {
@@ -47,6 +48,10 @@ class TaskItem extends React.Component {
     });
   }
 
+  refFunc(r) {
+    this.menu = r;
+  }
+
   openMenu() {
     this.menu.open();
   }
@@ -56,6 +61,7 @@ class TaskItem extends React.Component {
       name, description, isFinished, editTaskBool, listId, id, oldListId,
     } = this.state;
     const { removeTask } = this.props;
+    const { refFunc } = this;
     return (
       <View style={commonStyles.container}>
         { !editTaskBool ? (
@@ -107,7 +113,7 @@ class TaskItem extends React.Component {
             />
           </View>
         )}
-        <Menu ref={(r) => (this.menu = r)}>
+        <Menu ref={(r) => refFunc(r)}>
           <MenuTrigger />
           <MenuOptions>
             <MenuOption

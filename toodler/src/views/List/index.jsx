@@ -58,6 +58,7 @@ const List = ({ route, navigation }) => {
         <NewTaskForm
           confirm={(l) => addToList(l)}
           cancel={() => setAddTask(false)}
+          listId={listId}
         />
       ) : (null) }
       <DisplayList

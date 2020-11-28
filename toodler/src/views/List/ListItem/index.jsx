@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   View, Text, TouchableOpacity, TextInput, Button,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './styles';
 import commonStyles from '../../../styles/commonStyles';
 
@@ -55,5 +56,12 @@ const ListItem = ({
       )}
     </View>
   );
+};
+ListItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  remove: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  pressIt: PropTypes.func.isRequired,
 };
 export default ListItem;

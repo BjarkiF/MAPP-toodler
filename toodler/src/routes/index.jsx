@@ -16,12 +16,12 @@ const createAppContainer = () => (
       <Stack.Screen
         name="Boards"
         component={Boards}
-        options={({ navigation, route }) => ({ title: 'Boards' })}
+        options={() => ({ title: 'Boards' })}
       />
       <Stack.Screen
         name="Board"
         component={Board}
-        options={({ navigation, route }) => ({ title: route.params.name })}
+        options={({ route }) => ({ title: route.params.name })}
       />
       <Stack.Screen
         name="List"
