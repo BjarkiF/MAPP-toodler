@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
   },
   taskDescription: {
     padding: 5,
@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
-  }
+    height: 150,
+    width: 360,
+    padding: 5,
+  },
 });
 export default styles;

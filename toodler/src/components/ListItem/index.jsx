@@ -3,6 +3,7 @@ import {
   View, Text, TouchableOpacity, TextInput, Button,
 } from 'react-native';
 import styles from './styles';
+import commonStyles from '../../styles/commonStyles';
 
 const ListItem = ({
   name, color, pressIt, remove, edit,
@@ -16,19 +17,20 @@ const ListItem = ({
 
   const backgroundColor = color;
   return (
-    <View style={styles.listContainer}>
+    <View style={styles.Container}>
       { !editList ? (
-        <View>
-          <TouchableOpacity style={[styles.listItem, { backgroundColor }]} onPress={pressIt}>
-            <Text style={styles.listName}>{ name }</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={[commonStyles.listItem, { backgroundColor }]}
+          onPress={pressIt}
+        >
+          <Text style={styles.listName}>{ name }</Text>
           <TouchableOpacity style={styles.listItem} onPress={() => remove()}>
             <Text style={styles.listName}>Remove</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.listItem} onPress={() => setEditList(!editList)}>
             <Text style={styles.listName}>Edit</Text>
           </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
       ) : (
         <View>
           <TextInput
