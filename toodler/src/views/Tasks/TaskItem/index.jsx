@@ -33,15 +33,17 @@ class TaskItem extends React.Component {
     const {
       name,
       description,
-      isFinished,
       id,
       listId,
+      isFinished,
     } = this.props;
     const oldListId = listId;
+    if (isFinished) {
+      this.setState({ isFinished });
+    }
     this.setState({
       name,
       description,
-      isFinished,
       id,
       listId,
       oldListId,
