@@ -3,10 +3,10 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import data from '../../resources/data.json';
 import TaskItem from '../Tasks/TaskItem';
-import DisplayList from '../DisplayList';
+import DisplayList from '../../components/DisplayList';
 import Toolbar from '../Toolbar';
 import commonStyles from '../../styles/commonStyles';
-import NewTaskForm from './NewTaskForm';
+import NewTaskForm from '../Tasks/NewTaskForm';
 
 const List = ({ route, navigation }) => {
   const { listId } = route.params;
@@ -64,6 +64,7 @@ const List = ({ route, navigation }) => {
         items={tasksOnList}
         renderItem={(item) => (
           <TaskItem
+            key={item.id}
             id={item.id}
             name={item.name}
             description={item.description}

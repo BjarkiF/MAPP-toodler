@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import data from '../../resources/data.json';
 import ListItem from '../../components/ListItem';
-import DisplayList from '../DisplayList';
-import NewListForm from './NewListForm';
+import DisplayList from '../../components/DisplayList';
+import NewListForm from '../List/NewListForm';
 import commonStyles from '../../styles/commonStyles';
 import Toolbar from '../Toolbar';
-import EditItemView from '../EditItemView';
 
 const Board = ({ route, navigation }) => {
   const { boardId } = route.params;
@@ -60,7 +59,7 @@ const Board = ({ route, navigation }) => {
       return copyOfLists;
     });
   };
-
+  
   return (
     <View style={commonStyles.Container}>
       { addList ? (

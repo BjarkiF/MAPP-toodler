@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 
-import DisplayList from '../DisplayList';
-import BoardItem from './BoardItem';
+import DisplayList from '../../components/DisplayList';
+import BoardItem from '../Board/BoardItem';
 import Toolbar from '../Toolbar';
-
+import CommonStyles from '../../styles/commonStyles';
 import styles from './styles';
 import data from '../../resources/data.json';
-import EditItemView from '../EditItemView';
+import NewBoardForm from '../Board/NewBoardForm';
 
 const Boards = ({ route, navigation }) => {
   const [allBoards, setAllBoards] = useState([]);
@@ -50,9 +50,9 @@ const Boards = ({ route, navigation }) => {
   };
 
   return (
-    <View style={styles.boardContainer}>
+    <View style={CommonStyles.Container}>
       { addTable ? (
-        <EditItemView
+        <NewBoardForm
           obj={{
             name: 'Default Name',
             thumbnailPhoto: 'https://st4.depositphotos.com/14953852/22772/v/1600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg',
@@ -63,6 +63,7 @@ const Boards = ({ route, navigation }) => {
       )
         : (null)}
       <DisplayList
+        key={Date.now()}
         items={allBoards}
         renderItem={(item) => (
           <BoardItem

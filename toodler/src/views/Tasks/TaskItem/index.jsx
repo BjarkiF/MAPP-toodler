@@ -11,7 +11,7 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import styles from './styles';
-import commonStyles from '../../../styles/commonStyles'
+import commonStyles from '../../../styles/commonStyles';
 import listStyles from '../../../components/ListItem/styles';
 
 class TaskItem extends React.Component {
@@ -20,7 +20,7 @@ class TaskItem extends React.Component {
     this.state = {
       name: '',
       description: '',
-      isFinished: null,
+      isFinished: false,
       id: 0,
       listId: 0,
       editTaskBool: false,

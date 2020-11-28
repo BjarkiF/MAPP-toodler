@@ -29,6 +29,14 @@ const commonStyles = StyleSheet.create({
     width: 360,
     padding: 5,
   },
+  View: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 3,
+    marginBottom: 5,
+    backgroundColor: '#FFF',
+  },
+
 });
 
 export default commonStyles;

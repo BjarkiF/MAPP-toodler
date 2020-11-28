@@ -4,9 +4,11 @@ import {
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import RemoveItemView from '../../RemoveItemView';
-import EditItemView from '../../EditItemView';
+import RemoveItemView from '../../../components/RemoveItemView';
+
+import CommonStyles from '../../../styles/commonStyles';
 import styles from './styles';
+import NewBoardForm from '../NewBoardForm';
 
 const BoardItem = ({
   boardObj, gotoBoard, remove, edit,
@@ -26,7 +28,7 @@ const BoardItem = ({
   if (configure !== null) {
     if (configure === 'edit') {
       configureView = (
-        <EditItemView
+        <NewBoardForm
           obj={boardObj}
           confirm={(b) => {
             edit(b);
@@ -46,7 +48,7 @@ const BoardItem = ({
   }
 
   return (
-    <View style={styles.boardView}>
+    <View style={CommonStyles.View}>
       { !configure ? (
         <TouchableOpacity style={styles.leftBoardView} onPress={gotoBoard}>
           <Text>{ name }</Text>

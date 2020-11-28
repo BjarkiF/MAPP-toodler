@@ -6,7 +6,7 @@ import styles from './styles';
 const DisplayList = (props) => {
   const { items, renderItem } = props;
   return (
-    <View style={styles.container}>
+    <View key={Date.now()} style={styles.container}>
       { items.map(renderItem) }
     </View>
   );
